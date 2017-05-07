@@ -1,0 +1,59 @@
+package main
+
+import "fmt"
+
+var input = [6]int{1,4,5,6,8,2}
+var kolom = 6
+var baris = 9
+var twoD [9][6]int
+
+func main() {
+allocate()
+print()	
+fmt.Printf("\n ")
+print2()	
+}
+
+func allocate(){
+
+for i := 0; i < baris-1; i++ {
+        for j := 0; j < kolom; j++ {
+             if (baris-1-i)<= input[j]{
+			 twoD[i][j] = 1
+			 }else{
+			 twoD[i][j] = 0
+			 }
+		}
+	}
+for j := 0; j < kolom; j++ {
+            twoD[8][j] = input[j]
+		}
+}
+
+func print(){
+fmt.Println("ARRAY : ")
+fmt.Printf(" ")
+	for i := 0; i < baris; i++ {
+        for j := 0; j < kolom; j++ {
+            fmt.Printf("%d", twoD [i][j])
+        }
+		fmt.Printf("\n ")
+    }
+}
+
+func print2(){
+fmt.Println("VERTICAL BAR CHART : ")
+fmt.Printf(" ")
+	for i := 0; i < baris; i++ {
+        for j := 0; j < kolom; j++ {
+			if i==(baris-1) {
+			fmt.Printf("%d", twoD [i][j])
+			}else if twoD [i][j] == 0 {
+			fmt.Printf(" ")
+			}else{
+			fmt.Printf("|")
+			}
+        }
+		fmt.Printf("\n ")
+    }
+}
