@@ -1,0 +1,66 @@
+package main
+
+import "fmt"
+
+var input = []int{1,4,5,6,8,2}
+ var b = []int{5, 4, 3, 2, 1}
+var kolom = 6
+var baris = 9
+var twoD [9][6]int
+
+func main() {
+allocate(input)
+fmt.Printf("\n ")
+print2()
+insertionsort(input)	
+ fmt.Println(input)
+}
+
+func allocate(data []int){
+for i := 0; i < baris-1; i++ {
+        for j := 0; j < kolom; j++ {
+             if (baris-1-i)<= data[j]{
+			 twoD[i][j] = 1
+			 }else{
+			 twoD[i][j] = 0
+			 }
+		}
+	}
+for j := 0; j < kolom; j++ {
+            twoD[8][j] = data[j]
+		}
+}
+
+func print2(){
+fmt.Println("VERTICAL BAR CHART : ")
+fmt.Printf(" ")
+	for i := 0; i < baris; i++ {
+        for j := 0; j < kolom; j++ {
+			if i==(baris-1) {
+			fmt.Printf("%d", twoD [i][j])
+			}else if twoD [i][j] == 0 {
+			fmt.Printf(" ")
+			}else{
+			fmt.Printf("|")
+			}
+        }
+		fmt.Printf("\n ")
+    }
+}
+func insertionsort (A []int){
+for i := 1; i < len(A); i++ {
+        var temp = A[i]
+        var j = i-1
+
+        for j >= 0 && A[j] < temp {
+            A[j+1] = A[j]
+			A[j]=temp
+			j=j-1
+			allocate(A)
+			print2()
+        }
+		 A[j+1] = temp
+		 
+    }
+}
+
